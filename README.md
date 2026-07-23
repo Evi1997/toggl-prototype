@@ -6,24 +6,6 @@ No build step, no npm, no Node. Just files.
 
 ---
 
-## Deploy (do this now, before the clock starts)
-
-1. Go to **https://app.netlify.com/drop**
-2. Drag this entire `04-prototype` folder onto the page
-3. You get a live HTTPS URL in about 20 seconds
-
-That's your link. To update it later, drag the folder again — or connect it to a Netlify site for a permanent URL.
-
-**Important:** double-clicking `index.html` will *not* work. ES modules are blocked on `file://`. You need it served over http/https — which Netlify Drop does for free.
-
-If you'd rather preview locally, open Terminal in this folder and run:
-```
-python3 -m http.server 8000
-```
-then visit `http://localhost:8000`.
-
----
-
 ## Files
 
 | File | What it is | Touch it? |
