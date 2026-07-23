@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Toggl 2.0 — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
+<style>
+  body { background: var(--bg-secondary); }
+  .doc { max-width: 1080px; margin: 0 auto; padding: 48px 24px 96px; }
+  .doc h1 { font-size: 32px; font-weight: 600; margin: 0 0 8px; }
+  .doc h2 { font-size: 20px; font-weight: 600; margin: 48px 0 4px; }
+  .doc h3 { font-size: 14px; font-weight: 600; margin: 24px 0 8px; color: var(--fg-secondary); }
+  .doc p  { color: var(--fg-secondary); margin: 0 0 8px; max-width: 640px; }
+  .sect { background: var(--bg-primary); border: 1px solid var(--stroke-primary);
+          border-radius: var(--radius); padding: 24px; margin-top: 12px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .sw { border: 1px solid var(--stroke-primary); border-radius: var(--radius); overflow: hidden; }
+  .sw-chip { height: 56px; }
+  .sw-meta { padding: 8px 10px; font-size: 11px; line-height: 1.5; }
+  .sw-name { font-weight: 600; }
+  .sw-val { color: var(--fg-secondary); font-family: ui-monospace, monospace; }
+  .specimen { border-bottom: 1px solid var(--stroke-muted); padding: 10px 0; display: flex;
+              align-items: baseline; gap: 24px; }
+  .specimen:last-child { border-bottom: 0; }
+  .specimen code { font-size: 11px; color: var(--fg-secondary); font-family: ui-monospace, monospace;
+                   min-width: 150px; }
+  .demo { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rule { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--stroke-muted); }
+  .rule:last-child { border-bottom: 0; }
+  .rule b { min-width: 190px; flex: 0 0 auto; }
+  .yes { color: var(--fg-success); font-weight: 600; }
+  .no  { color: var(--fg-error); font-weight: 600; }
+  table.spec { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.spec th { text-align: left; padding: 8px 12px 8px 0; font-size: 11px; letter-spacing: .32px;
+                  text-transform: uppercase; color: var(--fg-secondary); border-bottom: 1px solid var(--stroke-primary); }
+  table.spec td { padding: 8px 12px 8px 0; border-bottom: 1px solid var(--stroke-muted);
+                  font-family: ui-monospace, monospace; font-size: 12px; }
+  table.spec td:first-child { font-family: var(--font-sans); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <h1>Toggl 2.0 — Design System</h1>
+  <p>Every value here was measured from the live app at <b>focus.toggl.com</b> on 21 July 2026, not eyeballed from screenshots. Stack: Tailwind CSS v4 + Inter with a semantic token layer.</p>
+
+  <!-- ============ COLOR ============ -->
+  <h2>Colour</h2>
+  <p>Use the semantic names. The raw palette is reference only.</p>
+
+  <div class="sect">
+    <h3>Brand</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#a84c9d"></div><div class="sw-meta"><div class="sw-name">accent</div><div class="sw-val">#a84c9d</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f6e5f3"></div><div class="sw-meta"><div class="sw-name">accent-020</div><div class="sw-val">#f6e5f3</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#632e5c"></div><div class="sw-meta"><div class="sw-name">accent-120</div><div class="sw-val">#632e5c</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#eccce6"></div><div class="sw-meta"><div class="sw-name">stroke-accent</div><div class="sw-val">#eccce6</div></div></div>
+    </div>
+
+    <h3>Surfaces</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#ffffff"></div><div class="sw-meta"><div class="sw-name">bg-primary</div><div class="sw-val">#ffffff</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f5f5f5"></div><div class="sw-meta"><div class="sw-name">bg-secondary</div><div class="sw-val">#f5f5f5</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#e9e8e8"></div><div class="sw-meta"><div class="sw-name">bg-tertiary</div><div class="sw-val">#e9e8e8</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f6e5f3"></div><div class="sw-meta"><div class="sw-name">bg-muted</div><div class="sw-val">#f6e5f3</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#1c1a1c"></div><div class="sw-meta"><div class="sw-name">bg-inverted</div><div class="sw-val">#1c1a1c</div></div></div>
+    </div>
+
+    <h3>Text</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#131213"></div><div class="sw-meta"><div class="sw-name">fg-primary</div><div class="sw-val">#131213</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#575456"></div><div class="sw-meta"><div class="sw-name">fg-secondary</div><div class="sw-val">#575456</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#b3b0b2"></div><div class="sw-meta"><div class="sw-name">fg-tertiary</div><div class="sw-val">#b3b0b2</div></div></div>
+    </div>
+
+    <h3>Semantic</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#2f863a"></div><div class="sw-meta"><div class="sw-name">affirmative</div><div class="sw-val">#2f863a</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#a1281c"></div><div class="sw-meta"><div class="sw-name">destructive</div><div class="sw-val">#a1281c</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#c65b4c"></div><div class="sw-meta"><div class="sw-name">stop-timer</div><div class="sw-val">#c65b4c</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#fde8c6"></div><div class="sw-meta"><div class="sw-name">bg-warning</div><div class="sw-val">#fde8c6</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#d8f0d8"></div><div class="sw-meta"><div class="sw-name">bg-success</div><div class="sw-val">#d8f0d8</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#f8d5cf"></div><div class="sw-meta"><div class="sw-name">bg-error</div><div class="sw-val">#f8d5cf</div></div></div>
+    </div>
+
+    <h3>Project palette</h3>
+    <div class="swatches">
+      <div class="sw"><div class="sw-chip" style="background:#a84c9d"></div><div class="sw-meta"><div class="sw-name">magenta</div><div class="sw-val">#a84c9d</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#9a5fb2"></div><div class="sw-meta"><div class="sw-name">grape</div><div class="sw-val">#9a5fb2</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#e87161"></div><div class="sw-meta"><div class="sw-name">orange</div><div class="sw-val">#e87161</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#c8910a"></div><div class="sw-meta"><div class="sw-name">gold</div><div class="sw-val">#c8910a</div></div></div>
+      <div class="sw"><div class="sw-chip" style="background:#371d42"></div><div class="sw-meta"><div class="sw-name">plum</div><div class="sw-val">#371d42</div></div></div>
+    </div>
+  </div>
+
+  <!-- ============ TYPE ============ -->
+  <h2>Typography</h2>
+  <p><b>Inter</b> only. The single most-missed detail: default body weight is <b>500</b>, not 400.</p>
+  <div class="sect">
+    <div class="specimen"><code>text-h3 · 20/600/32</code><span class="t-h3">Plans grounded in reality</span></div>
+    <div class="specimen"><code>text-h4 · 16/600</code><span class="t-h4">Settings &amp; Preferences</span></div>
+    <div class="specimen"><code>text-p1 · 14/600</code><span class="t-p1">Onboarding flow revisions</span></div>
+    <div class="specimen"><code>body · 14/500</code><span class="t-body">Most planning tools are built without time data.</span></div>
+    <div class="specimen"><code>text-p2 · 12/600</code><span class="t-p2">Northwind Rebrand</span></div>
+    <div class="specimen"><code>text-h6 · 11/600/-.22</code><span class="t-h6">CAPACITY THIS WEEK</span></div>
+    <div class="specimen"><code>nav section · 11/500/+.32</code><span class="t-nav-section">Plan</span></div>
+  </div>
+
+  <!-- ============ SPACE ============ -->
+  <h2>Space, radius, elevation, motion</h2>
+  <div class="sect">
+    <table class="spec">
+      <tr><th>Token</th><th>Value</th><th>Where</th></tr>
+      <tr><td>Spacing base</td><td>4px</td><td>Scale: 4 / 8 / 12 / 16 / 24 / 32</td></tr>
+      <tr><td>Radius default</td><td>8px</td><td>Buttons, cards, inputs, columns, modals</td></tr>
+      <tr><td>Radius small</td><td>4px</td><td>Checkboxes, chips, tiny tiles</td></tr>
+      <tr><td>Radius full</td><td>9999px</td><td>Avatars, pills, timer button</td></tr>
+      <tr><td>Elevation raised-10</td><td>#00000014</td><td>Card hover</td></tr>
+      <tr><td>Elevation raised-20</td><td>#00000029</td><td>Modal, drawer, scrim</td></tr>
+      <tr><td>Transition</td><td>.15s cubic-bezier(.4,0,.2,1)</td><td>Everything</td></tr>
+      <tr><td>Sidebar</td><td>200px + 48px rail</td><td>248px total left chrome</td></tr>
+      <tr><td>Row height</td><td>48px</td><td>Task list rows</td></tr>
+      <tr><td>Nav item</td><td>32px, gap 12, px 8</td><td>Sidebar</td></tr>
+      <tr><td>Board column</td><td>292px</td><td>Kanban</td></tr>
+    </table>
+  </div>
+
+  <!-- ============ COMPONENTS ============ -->
+  <h2>Components</h2>
+
+  <div class="sect">
+    <h3>Buttons — 36px tall, 16px padding, 8px gap, weight 600</h3>
+    <div class="demo">
+      <button class="btn btn-primary">Add task</button>
+      <button class="btn btn-secondary">Filters</button>
+      <button class="btn btn-ghost">Cancel</button>
+      <button class="btn btn-primary" disabled>Disabled</button>
+      <button class="icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg></button>
+    </div>
+    <h3>Toolbar control — active value in accent</h3>
+    <div class="demo">
+      <button class="btn btn-secondary"><span>Group by:</span><span class="ctrl-value">Status</span></button>
+      <button class="btn btn-secondary"><span>Sort by:</span><span class="ctrl-value">Priority</span></button>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h3>Chips</h3>
+    <div class="demo">
+      <span class="chip">📝 Todo</span>
+      <span class="chip chip-accent">Today</span>
+      <span class="chip chip-outline">Add tag</span>
+      <span class="chip chip-success">Under budget</span>
+      <span class="chip chip-warning">Nearly over</span>
+      <span class="chip chip-error">Over capacity</span>
+      <span class="project-chip"><span class="project-dot" style="background:#a84c9d"></span>Northwind Rebrand</span>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h3>Controls</h3>
+    <div class="demo" style="gap:24px">
+      <span class="check-circle"></span>
+      <span class="check-circle is-done"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <span class="check-box"></span>
+      <span class="check-box is-on"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <span class="toggle"></span>
+      <span class="toggle is-on"></span>
+    </div>
+    <h3>Inputs</h3>
+    <div class="grid2" style="margin-top:8px">
+      <label class="field"><span class="t-field-label">Task name</span>
+        <input class="input" placeholder="What needs doing?" /></label>
+      <label class="field"><span class="t-field-label">Estimate</span>
+        <input class="input mono" placeholder="Empty" /><span class="field-hint">Leave blank if you're not sure</span></label>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h3>Progress</h3>
+    <div class="col g12" style="max-width:340px">
+      <div><div style="font-size:12px;margin-bottom:4px">4h of 8h · 50%</div><div class="bar"><div class="bar-fill is-under" style="width:50%"></div></div></div>
+      <div><div style="font-size:12px;margin-bottom:4px" class="fg-error">+2h 30m over</div><div class="bar"><div class="bar-fill is-over" style="width:100%"></div></div></div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h3>Board card</h3>
+    <div style="width:264px">
+      <div class="card">
+        <div class="card-head">
+          <span class="check-circle"></span>
+          <span class="card-title">Onboarding flow revisions</span>
+        </div>
+        <div class="card-meta">
+          <span class="chip">📝 Todo</span>
+          <span class="chip chip-accent">Today</span>
+          <span class="chip mono">3h</span>
+        </div>
+        <div class="card-meta">
+          <span class="project-chip"><span class="project-dot" style="background:#e87161"></span>Meridian Onboarding</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h3>KPI card</h3>
+    <div class="kpi-card" style="margin:0">
+      <div class="kpi"><div class="kpi-label">Logged time</div><div class="kpi-value">12h 15m</div></div>
+      <div class="kpi"><div class="kpi-label">Billable time</div><div class="kpi-value">10h 2m <span class="unit">(81.90%)</span></div></div>
+      <div class="kpi"><div class="kpi-label">Amount</div><div class="kpi-value">652.30 <span class="unit">EUR</span></div></div>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h3>Empty state &amp; toast</h3>
+    <div class="empty-state" style="padding:32px">
+      <h3 style="margin:0">No tasks match</h3>
+      <p>Try a different search, or clear your filters to see everything again.</p>
+      <button class="btn btn-secondary">Clear filters</button>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:12px">
+      <div class="toast" style="position:static;animation:none">
+        <span>"Client revisions" deleted</span><button>Undo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VOICE ============ -->
+  <h2>Voice &amp; copy</h2>
+  <p>Taken verbatim from their 404 page and AI popover — the two places their voice is clearest.</p>
+  <div class="sect">
+    <div class="rule"><b>Case</b><span>Sentence case everywhere. <span class="yes">Add task</span> not <span class="no">Add Task</span></span></div>
+    <div class="rule"><b>Contractions</b><span>Always. <span class="yes">you're, we'll, there's</span></span></div>
+    <div class="rule"><b>Voice</b><span>First-person plural for the product: <span class="yes">"we'll break down the tasks"</span></span></div>
+    <div class="rule"><b>Buttons</b><span>The user's own words: <span class="yes">Take me home</span> not <span class="no">Go home</span></span></div>
+    <div class="rule"><b>Emoji</b><span>Never in prose. Only as status glyphs (📝 🚧 👀 ✅)</span></div>
+    <div class="rule"><b>Exclamation marks</b><span><span class="no">Never</span></span></div>
+    <div class="rule"><b>Empty values</b><span>The literal word <span class="yes">Empty</span> in fg-tertiary. Not "—", not "None"</span></div>
+    <div class="rule"><b>Durations</b><span><span class="yes">1h 41m</span>, <span class="yes">45m</span>, <span class="yes">2h</span></span></div>
+    <div class="rule"><b>Timer readout</b><span><span class="yes">0:14:57</span></span></div>
+    <div class="rule"><b>Dates</b><span><span class="yes">Jul 21</span> · relative: <span class="yes">Today</span>, <span class="yes">Tomorrow</span></span></div>
+    <div class="rule"><b>Weeks</b><span><span class="yes">This week • W30</span> — ISO week numbers are shown in the UI</span></div>
+    <div class="rule"><b>Premium</b><span>★ star, consistently</span></div>
+    <div class="rule"><b>Tone</b><span>Warm, plain, a touch of dry wit. Never cutesy, never corporate.</span></div>
+  </div>
+
+  <div class="sect" style="border-color:var(--stroke-accent);background:var(--bg-muted)">
+    <h3 style="color:var(--fg-accent);margin-top:0">Their 404, for reference</h3>
+    <p style="color:var(--fg-primary)"><b>Can't find what you're looking for?</b><br/>
+    You've somehow ended up in the wrong space-time continuum. There's no one around. Find a path home and begin your search again.</p>
+    <button class="btn btn-secondary">Take me home</button>
+  </div>
+
+</div>
+</body>
+</html>
